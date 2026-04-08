@@ -1,0 +1,54 @@
+{
+  "name": "screen-control",
+  "version": "1.0.0",
+  "description": "Zenith Control Center for floating UI",
+  "main": "index.js",
+  "scripts": {
+    "dev-renderer": "npm run dev --prefix design",
+    "dev": "concurrently \"npm run dev-renderer\" \"wait-on http://localhost:5173 && electron .\"",
+    "build-renderer": "npm run build --prefix design",
+    "build": "npm run build-renderer && electron-builder",
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Mohanned",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "brightness": "^3.0.0",
+    "loudness": "^0.4.2",
+    "node-wifi": "^2.0.16",
+    "systeminformation": "^5.31.5"
+  },
+  "build": {
+    "npmRebuild": false,
+    "appId": "com.zenith.screencontrol",
+    "productName": "Zenith Control Center",
+    "directories": {
+      "output": "build_output"
+    },
+    "files": [
+      "index.js",
+      "preload.cjs",
+      "tray-icon.png",
+      "design/dist/**/*",
+      "node_modules/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "tray-icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "electron": "^41.1.1",
+    "electron-builder": "^26.8.1",
+    "electron-is-dev": "^3.0.1",
+    "wait-on": "^9.0.4"
+  }
+}

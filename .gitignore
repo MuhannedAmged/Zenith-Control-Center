@@ -1,0 +1,13 @@
+node_modules/
+dist_app/
+build_output/
+build.log
+build_debug.log
+.DS_Store
+.env
+设计/dist/
+design/dist/
+design/node_modules/
+*.exe
+*.zip
+*.7z
